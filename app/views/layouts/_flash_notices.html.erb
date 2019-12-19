@@ -1,0 +1,5 @@
+<div id="flash-notice" class="align-items-center bg-success text-white <%= "hidden" unless flash[:notice].present? %>">
+  <i class="fas fa-exclamation-circle mr-4" style="font-size: 1.7em;"></i>
+  <p class="font-weight-bold mb-0 flex-grow-1"><%= flash[:notice] %></p>
+  <i id="close-flash-notice" class="fas fa-times clickable p-2" style="font-size: 1.4em;"></i>
+</div>

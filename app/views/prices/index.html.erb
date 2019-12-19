@@ -1,1 +1,53 @@
-Hello World!
+<% if params[:type] == "ethereum" %>
+  <div class="d-flex align-items-center">
+    <%= image_tag "ethereum.png", class: "title-logo ml-4" %>
+    <h2 class="m-4 text-info font-weight-bold">Captured Ethereum Prices</h2>
+  </div>
+<% else %>
+  <div class="d-flex align-items-center">
+    <%= image_tag "bitcoin.png", class: "title-logo ml-4" %>
+    <h2 class="m-4 text-info font-weight-bold">Captured Bitcoin Prices</h2>
+  </div>
+<% end %>
+
+<table class="historical-table mx-4 mb-4" style="width: calc(100vw - 3rem);">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Ask</th>
+      <th>Bid</th>
+      <th>Last</th>
+      <th>Captured At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @history.each_with_index do |crypto, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= crypto.ask %></td>
+        <td><%= crypto.bid %></td>
+        <td><%= crypto.last %></td>
+        <td><%= crypto.created_at.strftime("%d %b %Y, %-l:%M%p") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  table.historical-table th,
+  table.historical-table td {
+    border-right: 1px solid #f3f3f3 !important;
+    border-bottom: 1px solid #f3f3f3 !important;
+    background-color: #fff !important;
+    padding: 10px;
+  }
+
+  table.historical-table th {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  table.historical-table th {
+    font-family: 'Open Sans', sans-serif;
+  }
+</style>

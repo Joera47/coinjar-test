@@ -3,33 +3,17 @@
     <h5 class="mb-0 font-weight-bold">Coinjar Test</h5>
   <% end %>
 
-  <%= link_to latest_prices_path, class: "#{action_name == "latest" ? "text-info" : "text-secondary" } ml-4" do %>
+  <%= link_to latest_prices_path, class: "#{action_name == "latest" ? "text-info" : "text-secondary" } mr-4" do %>
     <h5 class="mb-0 font-weight-bold">Latest Prices</h5>
   <% end %>
 
-  <%= link_to prices_path, class: "#{action_name == "index" ? "text-info" : "text-secondary" } mx-4" do %>
-    <h5 class="mb-0 font-weight-bold">History</h5>
+  <%= link_to prices_path, class: "#{action_name == "index" && params[:type] != "ethereum" ? "text-info" : "text-secondary" } mx-2" do %>
+    <h5 class="mb-0 font-weight-bold">Captured Bitcoin Prices</h5>
+  <% end %>
+
+  <%= link_to prices_path(type: "ethereum"), class: "#{action_name == "index" && params[:type] == "ethereum" ? "text-info" : "text-secondary" } mx-4" do %>
+    <h5 class="mb-0 font-weight-bold">Captured Ethereum Prices</h5>
   <% end %>
 </div>
 
 <div class="navbar-padding"></div>
-
-<style>
-  .main-navbar {
-    height: 65px;
-    position: fixed;
-    background-color: white;
-    padding: 10px 30px;
-    width: 100%;
-    top: 0;
-    left: 0;
-  }
-
-  .navbar-padding {
-    padding-top: 65px;
-  }
-
-  .navbar-navigation {
-    color: #555;
-  }
-</style>
