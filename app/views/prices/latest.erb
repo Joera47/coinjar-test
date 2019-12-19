@@ -1,0 +1,50 @@
+<h2 class="m-4 text-info font-weight-bold">Latest prices</h2>
+
+<div class="row">
+	<div class="col-lg-4 offset-lg-2">
+		<div class="bg-white shadow">
+			<div class="pl-4 d-flex align-items-center">
+				<%= image_tag "bitcoin.jpg", class: "main-logo my-3" %>
+				<h3 class="font-weight-bold text-primary ml-4">Bitcoin</h3>
+			</div>
+
+			<table>
+				<% @bitcoin_latest.sort.each do |key, value| %>
+					<tr>
+						<td><p class="px-4 font-weight-bold"><%= key.titleize %></p></td>
+						<td><p class="px-4"><%= value %></p></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+	<div class="col-lg-4">
+		<div class="bg-white shadow">
+			<div class="pl-4 d-flex align-items-center">
+				<%= image_tag "ethereum.png", class: "main-logo my-3" %>
+				<h4 class="font-weight-bold text-primary ml-4">Ethereum</h4>
+			</div>
+
+			<table>
+				<% @ethereum_latest.sort.each do |key, value| %>
+					<tr>
+						<td><p class="px-4 font-weight-bold"><%= key.titleize %></p></td>
+						<td><p class="px-4"><%= value %></p></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
+
+<style>
+	body {
+		background-color: #f3f3f3;
+	}
+
+	.main-logo {
+		height: 150px;
+		width: 150px;
+	}
+</style>
