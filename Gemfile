@@ -11,6 +11,7 @@ gem 'rest-client'
 gem "httparty"
 gem 'timezone'
 gem 'strftime-rails'
+gem 'chartkick'
 
 group :development, :test do
   gem 'capybara', '~> 2.13'

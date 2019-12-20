@@ -10,6 +10,18 @@
   </div>
 <% end %>
 
+<% if @history.present? %>
+  <div class="row mb-4">
+    <div class="col-lg-8 offset-lg-2">
+      <div id="show-trend-graph" class="float-right text-primary clickable m-3">Toggle trend graph</div>
+
+      <div id="trend-graph" class="bg-white shadow p-3" style="padding-bottom: 3.75rem !important; display: none;">
+        <%= line_chart @chart_data, min: @min, max: @max %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="col-lg-8 offset-lg-2">
   <table class="historical-table mb-4 w-100 shadow">
@@ -43,20 +55,8 @@
   </table>
 </div>
 
-<style>
-  table.historical-table th,
-  table.historical-table td {
-    border-right: 1px solid #f3f3f3 !important;
-    border-bottom: 1px solid #f3f3f3 !important;
-    background-color: #fff !important;
-    padding: 10px;
-  }
-
-  table.historical-table th {
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  table.historical-table th {
-    font-family: 'Open Sans', sans-serif;
-  }
-</style>
+<script>
+  $('#show-trend-graph').click(function() {
+    $('#trend-graph').toggle();
+  });
+</script>

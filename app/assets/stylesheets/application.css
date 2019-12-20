@@ -12,6 +12,7 @@
  *
  *= require fonts
  *= require global
+ *= require tables
  *= require_tree .
  *= require_self
  */

@@ -11,6 +11,18 @@ class PricesController < ApplicationController
     else
       @history = Bitcoin.all.order(id: :desc)
     end
+
+    if @history.present?
+      @chart_data = [
+        {name: "ask", data: @history.map {|crypto| [crypto.created_at, crypto.ask]}.to_h},
+        {name: "bid", data: @history.map {|crypto| [crypto.created_at, crypto.bid]}.to_h},
+        {name: "last", data: @history.map {|crypto| [crypto.created_at, crypto.last]}.to_h}
+      ]
+
+      all_values  = @history.map.map {|crypto| [crypto.ask, crypto.bid, crypto.last]}.flatten
+      @min        = all_values.min - 10
+      @max        = all_values.max + 10
+    end
   end
 
   def create
