@@ -13,7 +13,14 @@
         <% @bitcoin_latest.sort.each do |key, value| %>
           <tr>
             <td><p class="px-4 font-weight-bold"><%= key.titleize %></p></td>
-            <td><p class="px-4"><%= value %></p></td>
+
+            <td><p class="px-4">
+              <% if key.include?("time") %>
+                <%= Time.zone.parse(value).strftime("%d %b %Y, %-l:%M:%S %p") %>
+              <% else %>
+                <%= value %>
+              <% end %>
+            </p></td>
           </tr>
         <% end %>
       </table>
@@ -31,7 +38,14 @@
         <% @ethereum_latest.sort.each do |key, value| %>
           <tr>
             <td><p class="px-4 font-weight-bold"><%= key.titleize %></p></td>
-            <td><p class="px-4"><%= value %></p></td>
+
+            <td><p class="px-4">
+              <% if key.include?("time") %>
+                <%= Time.zone.parse(value).strftime("%d %b %Y, %-l:%M:%S %p") %>
+              <% else %>
+                <%= value %>
+              <% end %>
+            </p></td>
           </tr>
         <% end %>
       </table>
