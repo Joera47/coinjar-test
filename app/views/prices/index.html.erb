@@ -10,29 +10,38 @@
   </div>
 <% end %>
 
-<table class="historical-table mx-4 mb-4" style="width: calc(100vw - 3rem);">
-  <thead>
-    <tr>
-      <th>No.</th>
-      <th>Ask</th>
-      <th>Bid</th>
-      <th>Last</th>
-      <th>Captured At</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @history.each_with_index do |crypto, index| %>
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+  <table class="historical-table mb-4 w-100 shadow">
+    <thead>
       <tr>
-        <td><%= index + 1 %></td>
-        <td><%= crypto.ask %></td>
-        <td><%= crypto.bid %></td>
-        <td><%= crypto.last %></td>
-        <td><%= crypto.created_at.strftime("%d %b %Y, %-l:%M%p") %></td>
+        <th>No.</th>
+        <th>Ask</th>
+        <th>Bid</th>
+        <th>Last</th>
+        <th>Captured At</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @history.each_with_index do |crypto, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= crypto.ask %></td>
+          <td><%= crypto.bid %></td>
+          <td><%= crypto.last %></td>
+          <td><%= crypto.created_at.strftime("%d %b %Y, %-l:%M%p") %></td>
+        </tr>
+      <% end %>
+
+      <% if @history.blank? %>
+        <tr>
+          <td colspan="5">No saved prices. Head on over to <%= link_to "Latest Prices", latest_prices_path %> to begin.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <style>
   table.historical-table th,

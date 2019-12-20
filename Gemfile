@@ -11,19 +11,13 @@ gem 'rest-client'
 gem "httparty"
 gem 'timezone'
 gem 'strftime-rails'
-gem 'jquery-rails'
 
 group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry'
   gem 'listen'
+  gem "factory_bot_rails"
+  gem "rspec-rails"
+  gem "byebug"
 end
-
-
-# gem 'foreman'
-# gem 'sidekiq'
-# gem 'font-awesome-sass', '~> 5.8.1'
-# gem 'foundation-rails'
-# gem 'jquery-datatables-rails', '~> 3.3.0'
-# gem 'jquery-ui-rails'
